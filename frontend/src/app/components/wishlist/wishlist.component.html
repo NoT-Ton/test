@@ -1,0 +1,42 @@
+
+<div class="container-fluid" style="margin-top:30px">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Products</h2>
+      <div class="table-responsive-md">
+      <table class="table table-striped table-inverse">
+          <thead class="thead-inverse">
+              <tr>
+                <th>    </th>
+                  <th>Type</th>
+                  <th>Name</th>
+                  <th>Detail</th>
+                  <th>Price</th>
+
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of product; index as i">
+                <td><img [src]="item.product.img" style="height:50px;"></td>
+                  <td class="text">{{item.product.type}}</td>
+                  <td class="text">{{item.product.detail}}</td>
+                  <td class="text">{{item.product.price}}</td>
+
+                  <td>
+
+                    <button type="button" class="btn btn-danger" (click)=onDelete(item._id)>Delete</button>
+                  </td>
+              </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+
+            </tr>
+          </tfoot>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>
+

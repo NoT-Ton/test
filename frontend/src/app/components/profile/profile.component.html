@@ -1,0 +1,66 @@
+
+<div class="card">
+    <div class="container-fluid" [ngStyle]="{'background-color': ColorProperty}" >
+    <div class="card-body" style="margin-bottom: 25%;">
+        <div class="row">
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header">
+                        Profile
+                    </div>
+                    <form [formGroup]="userForm">
+                    <div class="card-body" *ngFor="let item of userid; index as i">
+                        <div class="row" style="padding: 5px;">
+                            <div class="col-lg-2"><i class="fa fa-id-card" aria-hidden="true"></i>User ID:</div>
+                            <div class="col-lg-10 text-left">
+                                {{item.username}}
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 5px;">
+                            <div class="col-lg-2"><i class="fa fa-user-circle" aria-hidden="true"></i> Name:</div>
+                            <div class="col-lg-10 text-left">
+                                {{item.name}}
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 5px;">
+                            <div class="col-lg-2"><i class="fa fa-user-circle" aria-hidden="true"></i> Surname:</div>
+                            <div class="col-lg-10 text-left">
+                                {{item.surname}}
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 5px;">
+                            <div class="col-lg-2"><i class="fa fa-venus-mars" aria-hidden="true"></i> Gender:</div>
+                            <div class="col-lg-10 text-left">
+                                {{item.gender}}
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 5px;">
+                            <div class="col-lg-2"><i class="fa fa-birthday-cake" aria-hidden="true"></i> Age:</div>
+                            <div class="col-lg-10 text-left">
+                                {{item.age}}
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 5px;">
+                            <div class="col-lg-2"><i class="fa fa-at" aria-hidden="true"></i> Email:</div>
+                            <div class="col-sm-10 text-left">
+                                {{item.email}}
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 5px;">
+                            <div class="col-lg-2"><i class="fa fa-phone" aria-hidden="true"></i> Phone:</div>
+                            <div class="col-lg-10 text-left">
+                                {{item.phone}}
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                <app-changecolor (messageEvent)="receiveData($event)"></app-changecolor>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
