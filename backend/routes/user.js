@@ -125,7 +125,7 @@ router.route("/signup").post((req, res) => {
   });
 });
 
-router.route("/updateuser/:id").put(authorization, (req, res) => {
+router.route("/updateuser/:id").put( (req, res) => {
   const id = req.params.id;
   const payload = {
       username: req.body.username,
@@ -154,6 +154,25 @@ router.route('/getuserdata/:id').get(authorization,(req, res) => {
      .catch(err => {
             console.log(err)
      })
+})
+
+// User update route
+router.put("/user/update/:user_id", function(req, res) {
+  User.findById(req.params.user_id).then(user => {
+      user.name = req.body.name;
+      user.surname = req.body.surname;
+      user.age = req.body.age;
+      user.email = req.body.email;
+      user.phone = req.body.phone;
+
+      user.save().then(user => {
+          res.status(200).json(`User updated! Updated user details: ${user}`);
+      }).catch(err => {
+          res.status(400).send(`User not possible. Error details: ${err.message}`);
+      });
+  }).catch(err => {
+      res.status(404).send(`Product not found. Error details: ${err.message}`);
+  });
 })
 
 module.exports = router;

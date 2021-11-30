@@ -18,7 +18,15 @@ app.use((req, res, next) => {
 })
 
 //middleware2, encode data(json)
-app.use(express.json());
+app.use(express.urlencoded({
+    limit: '50mb',
+    parameterLimit: 100000,
+    extended: true 
+  }));
+
+app.use(express.json({
+    limit: '50mb'
+  }));
 //middleware3,connect to mongodb
 app.use((req, res, next) => {
     mongoose.connect(url, config)
@@ -37,7 +45,7 @@ app.use('/login', require('./routes/signin'))
 app.use('/api', require('./routes/products'))
 app.use('/wishlist', require('./routes/wishlist'))
 app.use('/comment', require('./routes/comment'))
-
+app.use('/cart', require('./routes/cart'))
 
 app.listen(3000, function() {
     console.log('Listen on port 3000');

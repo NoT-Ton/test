@@ -23,10 +23,10 @@ export class UserService {
       }));
   }
 
-  updateUser(token: any, user:any,userid: any){
+  updateUser(userid: String,user:any){
     console.log("Use Function UpdateUser!")
-    const headers = {'Authorization': token}
-    return this.http.put<any>('http://localhost:3000/user/updateuser/'+userid,user,{headers})
+    console.log(user);
+    return this.http.put<any>('http://localhost:3000/user/user/update/'+userid,user)
     .pipe(map(data => {
       if (data) {
         

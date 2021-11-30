@@ -89,4 +89,9 @@ export class ShowproductsComponent implements OnInit {
       console.log(error)
      }
     }
+
+    addToCart(p_id: number){
+
+    }
+    
 }

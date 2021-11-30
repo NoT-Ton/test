@@ -12,7 +12,7 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class AddproductComponent implements OnInit {
 
-  productType: String[] = ['CPU','RAM', 'HDD','Mainboard']
+  productType: String[] = ['Shirt','Pant', 'Shoes','Sock']
   userid: any;
   token: any;
   products: any;

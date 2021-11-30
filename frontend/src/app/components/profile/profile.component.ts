@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'angular-web-storage';
 import { UserService } from 'src/app/services/user.service';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,10 +15,13 @@ export class ProfileComponent implements OnInit {
   userid: any;
   token!: string;
   userForm = new FormGroup({
-    username: new FormControl(),
-    name: new FormControl(),
-    surname: new FormControl(),
-    gender: new FormControl()
+    username: new FormControl(''),
+    name: new FormControl(''),
+    surname: new FormControl(''),
+    gender: new FormControl(''),
+    age: new FormControl(''),
+    phone: new FormControl('',[Validators.pattern('^(08|09|06)[0-9]{8}$')]),
+    email: new FormControl('',[Validators.email])
   })
 
   constructor(private local: LocalStorageService,private ud: UserService,private router: Router) { 
@@ -64,6 +67,22 @@ export class ProfileComponent implements OnInit {
       console.log(error)
       this.router.navigate(['/signin'])
     }
+  }
+
+  editProfile(userID: any){
+    console.log(userID);
+    //console.log(product);
+    console.log(this.userForm.value);
+    this.userid = this.local.get('user').result.id
+    this.ud.updateUser(this.userid,this.userForm.value).subscribe(
+      data => {
+        console.log(data);
+        alert('User updated successfully')
+        this.userForm.reset()
+      },
+      err =>{
+        console.log(err);
+      })
   }
 
 }

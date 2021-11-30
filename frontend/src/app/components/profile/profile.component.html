@@ -1,66 +1,200 @@
-
+<app-menu></app-menu>
 <div class="card">
-    <div class="container-fluid" [ngStyle]="{'background-color': ColorProperty}" >
-    <div class="card-body" style="margin-bottom: 25%;">
-        <div class="row">
-            <div class="col-md-2">
-
+  <div
+    class="container-fluid"
+    [ngStyle]="{ 'background-color': ColorProperty }"
+  >
+    <div class="card-body" style="margin-bottom: 25%">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+          <div class="card">
+            <div class="card-header">
+              Profile
+              <button
+                href="#"
+                style="margin-left: 85%"
+                type="button"
+                class="btn btn-outline-info btn-xs"
+                data-toggle="modal"
+                data-target="#myModal15"
+              >
+                Edit Profile
+              </button>
             </div>
-            <div class="col-md-10">
-                <div class="card">
-                    <div class="card-header">
-                        Profile
-                    </div>
-                    <form [formGroup]="userForm">
-                    <div class="card-body" *ngFor="let item of userid; index as i">
-                        <div class="row" style="padding: 5px;">
-                            <div class="col-lg-2"><i class="fa fa-id-card" aria-hidden="true"></i>User ID:</div>
-                            <div class="col-lg-10 text-left">
-                                {{item.username}}
-                            </div>
-                        </div>
-                        <div class="row" style="padding: 5px;">
-                            <div class="col-lg-2"><i class="fa fa-user-circle" aria-hidden="true"></i> Name:</div>
-                            <div class="col-lg-10 text-left">
-                                {{item.name}}
-                            </div>
-                        </div>
-                        <div class="row" style="padding: 5px;">
-                            <div class="col-lg-2"><i class="fa fa-user-circle" aria-hidden="true"></i> Surname:</div>
-                            <div class="col-lg-10 text-left">
-                                {{item.surname}}
-                            </div>
-                        </div>
-                        <div class="row" style="padding: 5px;">
-                            <div class="col-lg-2"><i class="fa fa-venus-mars" aria-hidden="true"></i> Gender:</div>
-                            <div class="col-lg-10 text-left">
-                                {{item.gender}}
-                            </div>
-                        </div>
-                        <div class="row" style="padding: 5px;">
-                            <div class="col-lg-2"><i class="fa fa-birthday-cake" aria-hidden="true"></i> Age:</div>
-                            <div class="col-lg-10 text-left">
-                                {{item.age}}
-                            </div>
-                        </div>
-                        <div class="row" style="padding: 5px;">
-                            <div class="col-lg-2"><i class="fa fa-at" aria-hidden="true"></i> Email:</div>
-                            <div class="col-sm-10 text-left">
-                                {{item.email}}
-                            </div>
-                        </div>
-                        <div class="row" style="padding: 5px;">
-                            <div class="col-lg-2"><i class="fa fa-phone" aria-hidden="true"></i> Phone:</div>
-                            <div class="col-lg-10 text-left">
-                                {{item.phone}}
-                            </div>
-                        </div>
-                    </div>
-                    </form>
+            <form [formGroup]="userForm">
+              <div class="card-body" *ngFor="let item of userid; index as i">
+                <div class="row" style="padding: 5px">
+                  <div class="col-lg-2">
+                    <i class="fa fa-id-card" aria-hidden="true"></i>User ID:
+                  </div>
+                  <div class="col-lg-10 text-left">
+                    {{ item.username }}
+                  </div>
                 </div>
-                <app-changecolor (messageEvent)="receiveData($event)"></app-changecolor>
-            </div>
+                <div class="row" style="padding: 5px">
+                  <div class="col-lg-2">
+                    <i class="fa fa-user-circle" aria-hidden="true"></i> Name:
+                  </div>
+                  <div class="col-lg-10 text-left">
+                    {{ item.name }}
+                  </div>
+                </div>
+                <div class="row" style="padding: 5px">
+                  <div class="col-lg-2">
+                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    Surname:
+                  </div>
+                  <div class="col-lg-10 text-left">
+                    {{ item.surname }}
+                  </div>
+                </div>
+                <div class="row" style="padding: 5px">
+                  <div class="col-lg-2">
+                    <i class="fa fa-venus-mars" aria-hidden="true"></i> Gender:
+                  </div>
+                  <div class="col-lg-10 text-left">
+                    {{ item.gender }}
+                  </div>
+                </div>
+                <div class="row" style="padding: 5px">
+                  <div class="col-lg-2">
+                    <i class="fa fa-birthday-cake" aria-hidden="true"></i> Age:
+                  </div>
+                  <div class="col-lg-10 text-left">
+                    {{ item.age }}
+                  </div>
+                </div>
+                <div class="row" style="padding: 5px">
+                  <div class="col-lg-2">
+                    <i class="fa fa-at" aria-hidden="true"></i> Email:
+                  </div>
+                  <div class="col-sm-10 text-left">
+                    {{ item.email }}
+                  </div>
+                </div>
+                <div class="row" style="padding: 5px">
+                  <div class="col-lg-2">
+                    <i class="fa fa-phone" aria-hidden="true"></i> Phone:
+                  </div>
+                  <div class="col-lg-10 text-left">
+                    {{ item.phone }}
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <app-changecolor
+            (messageEvent)="receiveData($event)"
+          ></app-changecolor>
         </div>
+      </div>
     </div>
+  </div>
+
+  <div class="modal fade" id="myModal15">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Edit your profile</h4>
+          <button type="button" class="close" data-dismiss="modal">
+            &times;
+          </button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form [formGroup]="userForm" style="margin-left: 4%">
+            <div class="card-body" *ngFor="let item of userid; index as i">
+              <td width="300"><img [src]="item.img" style="width: 300px" /></td>
+              <div class="row">
+                <div class="col-md-2">
+                  <a class="text6">name</a>
+                </div>
+                <div class="col-md-7">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="name"
+                      value="{{ item.name }}"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2">
+                  <a class="text6">Surname</a>
+                </div>
+                <div class="col-md-7">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="surname"
+                      value="{{ item.surname }}"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2">
+                  <a class="text6">Age</a>
+                </div>
+                <div class="col-md-7">
+                  <div class="form-group">
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="age"
+                      value="{{ item.age }}"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2">
+                  <a class="text6">Email</a>
+                </div>
+                <div class="col-md-7">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="email"
+                      value="{{ item.email }}"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2">
+                  <a class="text6">Phone</a>
+                </div>
+                <div class="col-md-7">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="phone"
+                      value="{{ item.phone }}"
+                    />
+                  </div>
+                </div>
+              </div>
+              <a
+            class="btn btn-outline-secondary pull-right"
+            (click)="editProfile(item.id)"
+          >
+            Update profile
+          </a>
+            </div>
+          </form>
+          
+        </div>
+        <!-- Modal footer -->
+      </div>
     </div>
+  </div>
+  
 </div>

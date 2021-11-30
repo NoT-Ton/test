@@ -21,7 +21,6 @@ const routes: Routes = [
   {path: 'searchproduct', component: SearchproductComponent},
   {path: '', redirectTo: 'signin', pathMatch: 'full'},
   {path: 'wishlist', component: WishlistComponent},
-  {path: '', redirectTo: 'products', pathMatch: 'full'}
 ];
 
 @NgModule({
